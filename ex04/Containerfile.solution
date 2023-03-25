@@ -1,0 +1,10 @@
+FROM docker.io/library/nginx:1.23
+LABEL maintainer="demo"
+
+ARG USER=demo
+RUN echo "Exercise4 is done for user: $USER !" > /usr/share/nginx/html/index.html
+
+ADD my-entrypoint.sh /my-entrypoint.sh
+ENTRYPOINT ["/my-entrypoint.sh"]
+CMD ["nginx","-g","daemon off;"]
+
